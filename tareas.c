@@ -79,6 +79,21 @@ bool pertenece (Nodo *start, int id_busc){
     return false ;
 
 }
+void liberar (Nodo *lista){
+    Nodo *aux ;
+    while (aux != NULL){
+        aux = lista;
+        lista = lista->Siguiente; //paso al proximo nodo antes de borrarlo
+        free (aux->T.Descripcion);
+        free(aux);
+    }
+}
+
+
+
+
+
+
 int main(){
 Nodo *start, *start_realizadas;
 Nodo *nodo, *nodo_mover;
@@ -125,5 +140,8 @@ if (id_buscar>id){
     printf ("Es una tarea realizada");
     }
 }
+
+    liberar(start);
+    liberar(start_realizadas);
 return 0;
 }
